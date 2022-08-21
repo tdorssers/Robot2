@@ -1,12 +1,25 @@
 /*
  * Title:    Line following and collision avoidance robot car II
  * Hardware: ATmega32 @ 16 MHz, HC-SR04 Ultrasonic Ranging Modules, SG90 Servo,
- *           L293D Motor Driver, TCRT5000 Reflective Optical Sensor, ITR9608
+ *           L293D Motor Driver, TCRT5000 Reflective Optical Sensors, ITR9608
  *           Optical Interrupters, ILI9341 TFT LCD Driver, QMC5883L Magnetic
- *           Sensor, VL53L0X Time-of-Flight Ranging Sensor
+ *           Sensor, VL53L0X Time-of-Flight Ranging Sensors
  *
  * Created: 5-8-2021 14:44:02
  * Author : Tim Dorssers
+ *
+ * The menu is controlled by the four push buttons. The magnetic sensor needs one
+ * time calibration, which is done from the 'Calibrate' menu and choosing 'Magneto
+ * cal'. The calibration data is erased by choosing *Reset bounds*. The TCRT5000
+ * sensors can be calibrated by choosing 'Start ir cal' and the data is saved by
+ * choosing 'Stop ir cal'. All data is saved to EEPROM. Configurable settings are
+ * made from the 'Configuration' menu. The Kp, Ki, Kd and dT parameters used by
+ * the motor PID control and the front, side and rear collision distances and the
+ * minimal speed are set from this menu. The 'Test drive' menu is used to show
+ * the different maneuvres the car can make. The 'Ping' menu option shows the
+ * sonar and LIDAR data observed by the car. The collision avoidance mode is
+ * selected by choosing 'Self drive' and the line following mode is selected by
+ * choosing 'Line Follow'.
  *
  * PA0/ADC0=TCRT5000#1	PB0/T0=ILI9341 DC		PC0/SCL=I2C		PD0/RXD=RS232
  * PA1/ADC1=TCRT5000#2	PB1/T1=ILI9341 RST		PC1/SDA=I2C		PD1/TXD=RS232
@@ -16,10 +29,6 @@
  * PA5/ADC5=Buttons		PB5/MOSI=ILI9341 MOSI	PC5=L293D 4A	PD5/OC1A=SG90 Servo
  * PA6/ADC6=Battery		PB6/MISO=ILI9341 MISO	PC6=TOF XSHUT	PD6/ICP1=ITR9608#2
  * PA7/ADC7=NC			PB7/SCK=ILI9341 SCK		PC7=IR Array	PD7/OC2=L293D 3-4EN
- *            ADC
- * +5 --- 4k7 -+- 1k -+- 1k2 -+- 1k5 -+- 2k2 -+- 4k7 -+- 10k -+
- *    button 0 :-|    :-|     :-|     :-|     :-|     :-|     :-| button 6
- *             0v     0v      0v      0v      0v      0v      0v
  */ 
 
 #define F_CPU 16000000
