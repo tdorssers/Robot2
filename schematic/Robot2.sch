@@ -20687,7 +20687,7 @@ Source: www.kingbright.com</description>
 <part name="R16" library="resistor" deviceset="R-EU_" device="0204/7" value="220"/>
 <part name="X1" library="con-ptr500" deviceset="AK300/2" device="" value="2 x 3.7v"/>
 <part name="IC4" library="v-reg" deviceset="78XXL" device="" value="LM7805"/>
-<part name="IC5" library="v-reg" deviceset="78LXX" device="" value="78L3V3"/>
+<part name="IC5" library="v-reg" deviceset="78LXX" device="" value="L78L33"/>
 <part name="S1" library="switch-omron" deviceset="10-XX" device="" value="Up"/>
 <part name="S2" library="switch-omron" deviceset="10-XX" device="" value="Down"/>
 <part name="S3" library="switch-omron" deviceset="10-XX" device="" value="Enter"/>
@@ -20702,7 +20702,7 @@ Source: www.kingbright.com</description>
 <part name="P+2" library="supply1" deviceset="V+" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="JP3" library="pinhead" deviceset="PINHD-1X9" device="" value="ILI9341"/>
-<part name="R17" library="rcl" deviceset="R-EU_" device="0207/2V" value="4k7"/>
+<part name="R17" library="rcl" deviceset="R-EU_" device="0207/2V" value="470"/>
 <part name="R18" library="rcl" deviceset="R-EU_" device="0207/2V" value="4k7"/>
 <part name="R19" library="rcl" deviceset="R-EU_" device="0207/2V" value="1k"/>
 <part name="R20" library="rcl" deviceset="R-EU_" device="0207/2V" value="1k2"/>
@@ -20755,6 +20755,7 @@ Source: www.kingbright.com</description>
 <part name="P+12" library="supply1" deviceset="+5V" device=""/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="J1" library="jumper" deviceset="J2" device="X2MM"/>
+<part name="R33" library="rcl" deviceset="R-EU_" device="0207/2V" value="10k"/>
 </parts>
 <sheets>
 <sheet>
@@ -20917,6 +20918,7 @@ Robot II
 <instance part="P+12" gate="1" x="2.54" y="-20.32" rot="R90"/>
 <instance part="GND13" gate="1" x="38.1" y="-20.32" rot="R90"/>
 <instance part="J1" gate="G$1" x="35.56" y="137.16" rot="R180"/>
+<instance part="R33" gate="G$1" x="83.82" y="91.44" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -21015,10 +21017,10 @@ Robot II
 <wire x1="35.56" y1="91.44" x2="35.56" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="RESET"/>
 <wire x1="35.56" y1="83.82" x2="38.1" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="91.44" x2="83.82" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="91.44" x2="83.82" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="91.44" x2="40.64" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="91.44" x2="40.64" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="5"/>
-<wire x1="83.82" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="40.64" y1="99.06" x2="101.6" y2="99.06" width="0.1524" layer="91"/>
 <junction x="35.56" y="91.44"/>
 </segment>
 </net>
@@ -21462,10 +21464,12 @@ Robot II
 <pinref part="P+4" gate="1" pin="+5V"/>
 <wire x1="30.48" y1="101.6" x2="30.48" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="101.6" y1="96.52" x2="81.28" y2="96.52" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="96.52" x2="81.28" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="101.6" x2="35.56" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="101.6" y1="96.52" x2="83.82" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="96.52" x2="83.82" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="101.6" x2="35.56" y2="101.6" width="0.1524" layer="91"/>
 <junction x="35.56" y="101.6"/>
+<pinref part="R33" gate="G$1" pin="2"/>
+<junction x="83.82" y="96.52"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="VCC1"/>
@@ -21714,10 +21718,14 @@ Robot II
 <net name="N$37" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="(SS)PB4"/>
-<wire x1="78.74" y1="53.34" x2="241.3" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="53.34" x2="83.82" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="53.34" x2="241.3" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="241.3" y1="53.34" x2="241.3" y2="35.56" width="0.1524" layer="91"/>
 <pinref part="IC2" gate="A" pin="I"/>
 <wire x1="241.3" y1="35.56" x2="243.84" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="R33" gate="G$1" pin="1"/>
+<wire x1="83.82" y1="86.36" x2="83.82" y2="53.34" width="0.1524" layer="91"/>
+<junction x="83.82" y="53.34"/>
 </segment>
 </net>
 <net name="N$43" class="0">
