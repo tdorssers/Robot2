@@ -16,7 +16,7 @@
  * made from the 'Configuration' menu. The Kp, Ki, Kd and dT parameters used by
  * the motor PID control and the front, side and rear collision distances and the
  * minimal speed are set from this menu. The 'Test drive' menu is used to show
- * the different maneuvres the car can make. The 'Ping' menu option shows the
+ * the different maneuvers the car can make. The 'Ping' menu option shows the
  * sonar and LIDAR data observed by the car. The collision avoidance mode is
  * selected by choosing 'Self drive' and the line following mode is selected by
  * choosing 'Line Follow'.
@@ -675,13 +675,13 @@ static void drawScreen(void) {
 		ili9341_setCursor(106, 16);
 		ili9341_puts_p(PSTR("Menu"));
 		ili9341_drawhline(0, 104, 275, ILI9341_WHITE);
+		ili9341_drawXBitmapTrans(303, 16, up_bits, 17, 16, ILI9341_WHITE);
+		ili9341_drawXBitmapTrans(303, 80, down_bits, 17, 16, ILI9341_WHITE);
+		ili9341_drawXBitmapTrans(285, 160, enter_bits, 35, 16, ILI9341_WHITE);
 	} else
 		ili9341_drawXBitmapTrans(172, 136, car_bits, 39, 61, ILI9341_WHITE);
-	ili9341_setTextColor(ILI9341_WHITE, ILI9341_DARKBLUE);
-	ili9341_drawXBitmapTrans(303, 16, up_bits, 17, 16, ILI9341_WHITE);
-	ili9341_drawXBitmapTrans(303, 80, down_bits, 17, 16, ILI9341_WHITE);
-	ili9341_drawXBitmapTrans(285, 160, enter_bits, 35, 16, ILI9341_WHITE);
 	ili9341_drawXBitmapTrans(285, 224, esc_bits, 35, 16, ILI9341_WHITE);
+	ili9341_setTextColor(ILI9341_WHITE, ILI9341_DARKBLUE);
 }
 
 // Calculate line position and visualize IR channels
